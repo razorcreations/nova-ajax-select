@@ -107,6 +107,12 @@ export default {
         },
 
         isWatchingComponent(component) {
+	   if(component.field !== undefined && component.field.attribute !== undefined &&  this.field.parent_attribute !== undefined){
+                let cleanAttribute = component.field.attribute.split('__').pop();
+                let cleanParentAttribute = this.field.parent_attribute.split('__').pop();
+                return cleanAttribute == cleanParentAttribute;
+            }
+
             return component.field !== undefined
                 && component.field.attribute == this.field.parent_attribute;
         }
